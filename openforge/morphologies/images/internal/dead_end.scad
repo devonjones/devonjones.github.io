@@ -6,4 +6,7 @@ color("LightGray") {
 }
 color("Grey") {
     cube([50,50,1]);
+    translate([0,50-10.2,0]) cube([50,10.2,50-6]);
+    translate([0,0,0]) cube([10.2,50,50-6]);
+    translate([50-10.2,0,0]) cube([10.2,50,50-6]);
 }
