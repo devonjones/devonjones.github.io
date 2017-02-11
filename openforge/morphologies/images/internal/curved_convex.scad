@@ -1,34 +1,32 @@
-//translate([0,0,0]) color("LightGray") square([25,25],false);
-//translate([25,0,0]) color("LightGray") square([25,25],false);
-//translate([0,25,0]) color("LightGray") square([25,25],false);
-//translate([25,25,0]) color("LightGray") square([25,25],false);
+_basis = 25; 
 
-scale([2,2,2]) {
-    //translate([0,50,0]) color("Gray") square([50,12.5],false);
-    //translate([50,0,0]) color("Gray") square([12.5,50],false);
+module curved_convex(r=2, h=2) {
+    color("LightGray") {
+        intersection () {
+            union() {
+                for (i = [0:r-1]) {
+                    for (j = [0:r-1]) {
+                        translate([_basis*i+1,_basis*j+1,0]) cube([23,23,4.5]);
+                    }
+                }
+
+            }
+            translate([0,0,-1]) cylinder(_basis*h,_basis*r-10.2,_basis*r-10.2, $fn=100);
+        }
+    }
+    color("Grey") {
+        intersection() {
+            cube([_basis*r,_basis*r,1]);
+            translate([0,0,-1]) cylinder(_basis*h,_basis*r-10.2,_basis*r-10.2, $fn=100);
+        }
+        intersection() {
+            difference() {
+                cylinder(_basis*h-6,_basis*r,_basis*r, $fn=100);
+                translate([0,0,-1]) cylinder(_basis*h+2,_basis*r-10.2,_basis*r-10.2, $fn=100);
+            }
+            cube([_basis*r,_basis*r,_basis*h]);
+        }
+    }
 }
 
-color("LightGray") {
-    intersection () {
-        union() {
-            translate([1,1,0]) cube([23,23,4.5]);
-            translate([25+1,1,0]) cube([23,23,4.5]);
-            translate([1,25+1,0]) cube([23,23,4.5]);
-            translate([25+1,25+1,0]) cube([23,23,4.5]);
-        }
-        cylinder(50,50-10.2,50-10.2);
-    }
-}
-color("Grey") {
-    intersection() {
-        cube([50,50,1]);
-        cylinder(50,50-10.2,50-10.2);
-    }
-    intersection() {
-        difference() {
-            cylinder(50-6,50,50);
-            cylinder(50,50-10.2,50-10.2);
-        }
-        cube([50,50,50]);
-    }
-}
+curved_convex();
