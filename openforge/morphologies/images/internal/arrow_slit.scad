@@ -1,6 +1,6 @@
 _basis = 25;
 
-module arrow_slit(x=2, y=2, base=false) {
+module arrow_slit(x=2, y=2, wall=10.2, base=false, external=false) {
     h = 2;
     base_buffer = base ? 6 : 0;
     translate([0,0,base_buffer]) color("LightGray") {
@@ -11,10 +11,12 @@ module arrow_slit(x=2, y=2, base=false) {
         }
     }
     color("Grey") {
+        sub = external ? 0 : wall;
+        ext = external ? wall : 0;
         cube([_basis*x,_basis*y,1+base_buffer]);
         difference() {
-            translate([0,_basis*y-10.2,0]) cube([_basis*x,10.2,_basis*h-6+base_buffer]);
-            translate([_basis*x/2,_basis*y+2,20-6+base_buffer]) scale([.6,1,1]) rotate([0,0,180+45]) cube([20,20,25]);
+            translate([0,_basis*y-sub,0]) cube([_basis*x,wall,_basis*h-6+base_buffer]);
+            translate([_basis*x/2,_basis*y+2+ext,20-6+base_buffer]) scale([.6,1,1]) rotate([0,0,180+45]) cube([20,20,25]);
         }
     }
 }
@@ -36,6 +38,6 @@ module construction_kit_corner_arrow_slit(x=2, y=2) {
     }
 }
 
-//arrow_slit(x=2, y=2, base=false);
+//arrow_slit(x=2, y=2, wall=10.2, base=false, external=false);
 //construction_kit_wall_arrow_slit(x=2, y=2, base=false);
 //construction_kit_corner_arrow_slit(x=2, y=2, base=false);

@@ -2,8 +2,8 @@ _basis = 25;
 
 module arched_door_hole(x=2, y=2, wall=10.2, border=0, base=false, external=false) {
     base_buffer = base ? 6 : 0;
+    sub = external ? 0 : wall;
     if (x < 3) {
-        sub = external ? 0 : wall;
         color("DarkGrey") {
             difference() {
                 children(0);
@@ -32,7 +32,7 @@ module arched_door_hole(x=2, y=2, wall=10.2, border=0, base=false, external=fals
         move = (x-2) * 12.5;
         color("DarkGrey") difference() {
             children(0);
-            translate([move,-2.5-10.2+_basis*y,base_buffer]) translate([-25,3,10.5-6]) union() {
+            translate([move,-2.5-sub+_basis*y,base_buffer]) translate([-25,3,10.5-6]) union() {
                 translate([12+_basis/2-border,-16.4,-4]) cube([51+border*2,24+border,24]);
                 translate([_basis*2,7.6+border,19]) rotate([90,0,0]) scale([1.5,1,1]) cylinder(24+border,17+border/1.5,17+border/1.5,$fn=100);
                 translate([14+12.7-border,-1.8,-4]) cube([47+border*2,22.1,24]);
@@ -40,14 +40,14 @@ module arched_door_hole(x=2, y=2, wall=10.2, border=0, base=false, external=fals
                     translate([14+12.7-border,-1.8,-4]) cube([47+border*2,22.1,50]);
                     translate([_basis*2,20.3,19]) rotate([90,0,0]) scale([1.5,1,1]) cylinder(22.1,17+border/1.5,17+border/1.5,$fn=100);
                 }
-                translate([15+12.5,3.7,-3.7]) cylinder(50,1,1,$fn=25);
-                translate([60+12.5,3.7,-3.7]) cylinder(50,1,1,$fn=25);
+                translate([15+12.5,wall-6.5,-3.7]) cylinder(50,1,1,$fn=25);
+                translate([60+12.5,wall-6.5,-3.7]) cylinder(50,1,1,$fn=25);
             }
         }
         difference() {
             children(1);
-            translate([move,-2.5-10.2+_basis*y,base_buffer]) color("DarkGrey") translate([15-12.5,6.7,.3]) cylinder(50,1,1,$fn=25);
-            translate([move,-2.5-10.2+_basis*y,base_buffer]) color("DarkGrey") translate([60-12.5,6.7,.3]) cylinder(50,1,1,$fn=25);
+            translate([move,_basis*y-(12.7-wall)-sub,base_buffer]) color("DarkGrey") translate([15-12.5,6.7,.3]) cylinder(50,1,1,$fn=25);
+            translate([move,_basis*y-(12.7-wall)-sub,base_buffer]) color("DarkGrey") translate([60-12.5,6.7,.3]) cylinder(50,1,1,$fn=25);
         }
     }
 }

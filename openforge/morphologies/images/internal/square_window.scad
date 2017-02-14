@@ -6,8 +6,9 @@ module square_window_hole() {
     }
 }
 
-module square_window(x=2, y=2, h=2, base=false) {
+module square_window(x=2, y=2, wall=10.2, base=false, external=false) {
     base_buffer = base ? 6 : 0;
+    h = 2;
     translate([0,0,base_buffer]) color("LightGray") {
         for (i = [0:x-1]) {
             for (j = [0:y-1]) {
@@ -16,10 +17,11 @@ module square_window(x=2, y=2, h=2, base=false) {
         }
     }
     color("Grey") {
+        sub = external ? 0 : wall;
         cube([_basis*x,_basis*y,1+base_buffer]);
         difference() {
-            translate([0,_basis*y-10.2,0]) cube([_basis*x,10.2,_basis*h-6+base_buffer]);
-            translate([_basis*x/2, _basis*y, base_buffer]) square_window_hole();
+            translate([0,_basis*y-sub,0]) cube([_basis*x,wall,_basis*h-6+base_buffer]);
+            translate([_basis*x/2, _basis*y-1, base_buffer]) square_window_hole();
         }
     }
 }
@@ -37,10 +39,10 @@ module construction_kit_corner_square_window(x=2, y=2) {
         square_window(x=x, y=y);
         color("Grey") translate([-1,-1,-1]) cube([_basis*x+2,_basis*y-10.2+1,6.5]);
         color("Grey") translate([-1,-1,-1]) cube([10.2/2+1,_basis*y+2,_basis*h+2]);
-        color("Grey") translate([_basis*x-10.2/2,-1,-1]) cube([10.2/2+1,_basis*y+2,_basis*h+2]);
+        color("Grey") translate([_basis*x-2/2,-1,-1]) cube([10.2/2+1,_basis*y+2,_basis*h+2]);
     }
 }
 
-//square_window(x=2, y=2, h=2, base=false);
+//square_window(x=2, y=2, h=2, wall=10.2, base=false, external=false);
 //construction_kit_wall_square_window(x=2, y=2);
-construction_kit_corner_square_window(x=2, y=2);
+//construction_kit_corner_square_window(x=2, y=2);
