@@ -22,5 +22,14 @@ module construction_kit_wall_floor(x=2, y=2, base=false) {
     }
 }
 
+module construction_kit_corner_floor(x=2, base=false) {
+    difference() {
+        floor_tile(x=x, y=x, base=base);
+        color("Grey") translate([-1,_basis*x-10.2-1,-1]) cube([_basis*x+2,10.2+2,10]);
+        color("Grey") translate([_basis*x-10.2-1,-1,-1]) cube([10.2+2,_basis*x+2,10]);
+    }
+}
+
 //floor_tile(x=2, y=2, base=false);
 //construction_kit_wall_floor(x=2, y=2, base=false);
+//construction_kit_corner_floor(x=2, y=2, base=false);

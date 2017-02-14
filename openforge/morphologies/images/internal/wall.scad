@@ -15,12 +15,17 @@ module wall(x=2, y=2, h=2, base=false) {
     }
 }
 
-module construction_kit_wall(x=2, y=2, h=2, base=false) {
-    difference() {
-        wall(x=x, y=y, h=h, base=base);
-        color("Grey") translate([-1,-1,-1]) cube([_basis*x+2,_basis*y-10.2+1,6.5]);
+module construction_kit_wall(x=2, y=2, h=2) {
+    color("Grey") {
+        translate([0,_basis*y-10.2,0]) cube([_basis*x,10.2,_basis*h-6]);
     }
 }
 
+module construction_kit_corner_wall(x=2, y=2, h=2) {
+    color("Grey") {
+        translate([0,_basis*y-10.2,0]) cube([_basis*x-10.2,10.2,_basis*h-6]);
+    }
+}
 //wall(x=2, y=2, h=2, base=false);
-//construction_kit_wall(x=2, y=2, h=2, base=false);
+//construction_kit_wall(x=2, y=2, h=2);
+//construction_kit_corner_wall(x=2, y=2, h=1);

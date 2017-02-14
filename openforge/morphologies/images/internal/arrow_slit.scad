@@ -19,13 +19,23 @@ module arrow_slit(x=2, y=2, base=false) {
     }
 }
 
-module construction_kit_wall_arrow_slit(x=2, y=2, base=false) {
+module construction_kit_wall_arrow_slit(x=2, y=2) {
     difference() {
         arrow_slit(x=x, y=y, base=base);
         color("Grey") translate([-1,-1,-1]) cube([_basis*x+2,_basis*y-10.2+1,6.5]);
     }
 }
 
+module construction_kit_corner_arrow_slit(x=2, y=2) {
+    h=2;
+    translate([10.2/2,0,0]) difference() {
+        arrow_slit(x=x, y=y);
+        color("Grey") translate([-1,-1,-1]) cube([_basis*x+2,_basis*y-10.2+1,6.5]);
+        color("Grey") translate([-1,-1,-1]) cube([10.2/2+1,_basis*y+2,_basis*h+2]);
+        color("Grey") translate([_basis*x-10.2/2,-1,-1]) cube([10.2/2+1,_basis*y+2,_basis*h+2]);
+    }
+}
+
 //arrow_slit(x=2, y=2, base=false);
 //construction_kit_wall_arrow_slit(x=2, y=2, base=false);
-
+//construction_kit_corner_arrow_slit(x=2, y=2, base=false);

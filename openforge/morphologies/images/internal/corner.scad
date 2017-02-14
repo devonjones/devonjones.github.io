@@ -16,4 +16,13 @@ module corner(x=2, h=2, base=false) {
     }
 }
 
-corner(x=2, h=2, base=true);
+module construction_kit_corner_corner_wall(x=2, h=2, base=false) {
+    base_buffer = base ? 6 : 0;
+    color("Grey") {
+        translate([0,_basis*x-10.2,0]) cube([_basis*x,10.2,_basis*h-6+base_buffer]);
+        translate([_basis*x-10.2,0,0]) cube([10.2,_basis*x,_basis*h-6+base_buffer]);
+    }
+}
+
+//corner(x=2, h=2, base=false);
+//construction_kit_corner_corner_wall(x=2, h=2, base=false);
