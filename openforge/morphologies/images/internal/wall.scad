@@ -15,4 +15,12 @@ module wall(x=2, y=2, h=2, base=false) {
     }
 }
 
-wall(x=2, y=2, h=2, base=false);
+module construction_kit_wall(x=2, y=2, h=2, base=false) {
+    difference() {
+        wall(x=x, y=y, h=h, base=base);
+        color("Grey") translate([-1,-1,-1]) cube([_basis*x+2,_basis*y-10.2+1,6.5]);
+    }
+}
+
+//wall(x=2, y=2, h=2, base=false);
+//construction_kit_wall(x=2, y=2, h=2, base=false);

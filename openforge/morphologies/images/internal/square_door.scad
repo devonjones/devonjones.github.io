@@ -57,4 +57,13 @@ module square_door(x=2, y=2, base=false) {
     }
 }
 
-square_door(x=2, y=2, base=false);
+module construction_kit_wall_square_door(x=2, y=2, base=false) {
+    difference() {
+        square_door(x=x, y=y, base=base);
+        color("Grey") translate([-1,-1,-1]) cube([_basis*x+2,_basis*y-10.2+1,6.5]);
+    }
+}
+
+//square_door(x=2, y=2, base=false);
+construction_kit_wall_square_door(x=2, y=2, base=false);
+

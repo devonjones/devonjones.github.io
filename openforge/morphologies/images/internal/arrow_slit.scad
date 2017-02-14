@@ -1,6 +1,7 @@
 _basis = 25;
 
-module arrow_slit(x=2, y=2, h=2, base=false) {
+module arrow_slit(x=2, y=2, base=false) {
+    h = 2;
     base_buffer = base ? 6 : 0;
     translate([0,0,base_buffer]) color("LightGray") {
         for (i = [0:x-1]) {
@@ -18,4 +19,13 @@ module arrow_slit(x=2, y=2, h=2, base=false) {
     }
 }
 
-arrow_slit(x=2, y=2, h=2, base=false);
+module construction_kit_wall_arrow_slit(x=2, y=2, base=false) {
+    difference() {
+        arrow_slit(x=x, y=y, base=base);
+        color("Grey") translate([-1,-1,-1]) cube([_basis*x+2,_basis*y-10.2+1,6.5]);
+    }
+}
+
+//arrow_slit(x=2, y=2, base=false);
+//construction_kit_wall_arrow_slit(x=2, y=2, base=false);
+
