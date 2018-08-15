@@ -1,6 +1,14 @@
 {
-  "main.css": "static/css/main.8a51c484.css",
-  "main.css.map": "static/css/main.8a51c484.css.map",
-  "main.js": "static/js/main.08717958.js",
-  "main.js.map": "static/js/main.08717958.js.map"
+  "main.css": "static/css/main.c4653f24.css",
+  "main.css.map": "static/css/main.c4653f24.css.map",
+  "main.js": "static/js/main.16ec1a94.js",
+  "main.js.map": "static/js/main.16ec1a94.js.map",
+  "static/media/armor-downgrade.svg": "static/media/armor-downgrade.726a7f3c.svg",
+  "static/media/armor-upgrade.svg": "static/media/armor-upgrade.b6168f96.svg",
+  "static/media/cog.svg": "static/media/cog.0877693c.svg",
+  "static/media/death-zone.svg": "static/media/death-zone.f02a34ac.svg",
+  "static/media/helmet-head-shot.svg": "static/media/helmet-head-shot.3f1a10ca.svg",
+  "static/media/open-wound.svg": "static/media/open-wound.9727ebdb.svg",
+  "static/media/target-shot.svg": "static/media/target-shot.247de0c8.svg",
+  "static/media/wrapped-heart.svg": "static/media/wrapped-heart.060c596b.svg"
 }
